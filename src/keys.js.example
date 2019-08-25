@@ -1,0 +1,4 @@
+export default{
+    privateKey : "your private key from marvel api",
+    publicKey : "your public key from marvel api"
+}
