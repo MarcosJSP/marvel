@@ -1,12 +1,19 @@
 <template>
-    <div id="pageSelector">
+    <div v-if="total>0" id="pageSelector">
         <button v-if="query.page-1>1" @click="changePage(1)"><<</button>
+        <button v-else class="hideMe"><<</button>
+        
         <button v-if="query.page>1" @click="changePage(query.page-1)"><</button>
+        <button v-else class="hideMe"><</button>
+
         <button v-for="page in prevPages" @click="changePage(page)" :key="page">{{page}}</button>
         <button disabled class="selected"><span>{{query.page}}</span></button>
         <button v-for="page in nextPages" @click="changePage(page)" :key="page">{{page}}</button>
+
         <button v-if="query.page<lastPage()" @click="changePage(query.page+1)">></button>
+        <button v-else class="hideMe">></button>
         <button v-if="query.page+1<lastPage()" @click="changePage(lastPage())">>></button>
+        <button v-else class="hideMe">>></button>
     </div>
 </template>
 
@@ -119,43 +126,49 @@ export default {
     #pageSelector{
         display: flex;
         justify-content: center;
-        height: 7vh;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background-color: var(--primary);
-        color: white;
-        font-family: 'Roboto', sans-serif;
-        font-size: 0.9rem;
-
-        -webkit-box-shadow: 0px -5px 15px 0px rgba(0,0,0,0.46);
-        -moz-box-shadow: 0px -5px 15px 0px rgba(0,0,0,0.46);
-        box-shadow: 0px -5px 15px 0px rgba(0,0,0,0.46);
+        height: 5vh;
+        font-family: 'Oswald', sans-serif;
+        font-weight: bold;
     }
 
     #pageSelector button{
         all: unset;
-        padding: 0 10px;
+        text-align: center;
+        margin-right: 1px;
+        height: 4vh;
+        width: 4vw;
+        border: 2px solid var(--secundary);
+    }
+
+
+    #pageSelector button{
         cursor: pointer;
-        font-size: .9rem;
-        font-weight: bold;
     }
 
     #pageSelector button:hover{
-        color: var(--secundary);
-        font-weight: bold;
+        color: var(--primary);
     }
 
-    #pageSelector button[disabled=disabled]:hover, #pageSelector button:disabled {
-        color: rgb(150, 20, 20);
-        text-align: center;
-        align-self: center;
-        font-weight: bold;
-        cursor: default;
+
+    #pageSelector button:active{
+        color: var(--terciary);
+        background: var(--secundary);
     }
 
-    #pageSelector button[disabled=disabled].selected span{
-        border-bottom: 3px solid rgb(150, 20, 20);
+    #pageSelector button.hideMe
+    ,#pageSelector button.hideMe:hover
+    ,#pageSelector button.hideMe:active{
+        cursor: auto;
+        color: var(--terciary);
+        border: 2px solid var(--terciary);
+        background: var(--terciary)
     }
+
+    #pageSelector button[disabled=disabled]
+    ,#pageSelector button[disabled=disabled]:hover{
+        cursor: auto;
+        color: var(--primary);
+        background-color: var(--secundary);
+    }
+
 </style>

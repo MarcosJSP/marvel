@@ -13,7 +13,7 @@ export default new Router({
       component: Home,
       props: (route) => ({query:
         { title: route.query.title ? route.query.title : ''
-        ,orderBy: route.query.orderBy ? route.query.orderBy : 'focDate'
+        ,orderBy: route.query.orderBy ? route.query.orderBy : 'title'
         ,asc: typeof route.query.asc != 'undefined' ? route.query.asc : true
         ,page: route.query.page ? route.query.page : 1
         ,limit: route.query.limit ? route.query.limit : 10}

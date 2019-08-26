@@ -3,11 +3,14 @@
         <div v-if="total>0" class="comics">
             <div class="comic" v-for="comic in comics" :key="comic.id">
                 <router-link :to="'/comics/' + comic.id">
-                <img
-                    :src="comic.thumbnail.path + '.' + comic.thumbnail.extension"
-                    :alt="comic.title"
-                />
-                    <span class="title">{{comic.title}}</span>
+                    <div :class="{front: noImage(comic.thumbnail.path)}" class="cover">
+                        <span class="title">{{comic.title}}</span>
+                    </div>
+                    <img v-if="!noImage(comic.thumbnail.path)"
+                        :src="comic.thumbnail.path + '.' + comic.thumbnail.extension"
+                        :alt="comic.title"
+                    />
+
                 </router-link>
             </div>
         </div>
@@ -25,57 +28,99 @@ export default {
         return {};
     },
     props: {
-        comics: Array
+        comics: {}
         ,total: Number
+    }
+    ,methods:{
+        noImage: function(image){
+            return image.includes('image_not_available');
+        }
     }
 };
 </script>
 
 <style>
-.comics {
+#homeFeed{
+    margin-bottom: 5vh;
+}
+.comics{
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    padding: 16.5vh 10vw 10vh;
+    justify-content: space-around;
 }
 
-.comic {
-    flex-basis: calc(20% - 40px);
-    margin: 0 20px 15px;
+.comic{
+    margin-top: 5vh;
+    height: 35vh;
+    flex-basis: calc( calc(100% - 10vh) / 5 );
+
     display: flex;
-    flex-direction: column;
-    word-break: break-all;
-    align-items: center;
-}
-
-.comic img {
-    max-height: 35vh;
-    min-height: 35vh;
-    max-width: 100%;
-    min-width: 100%;
-    border: 1px solid white;
-    border-radius: 5px;
-    background-color: white;
+    justify-content: center;
+    position: relative;
 }
 
 .comic a{
-    color: white;
-    text-decoration: none;
+    transition: transform 100ms ease-out;
+    /* box-shadow: 0px 7px 4px 0px rgba(0,0,0,0.75); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100%;
+    width: 80%;
+    border: 2px solid black;
+    background: var(--terciary);
 }
 
-.comic a:hover > *{
-    color: var(--primary);
-    text-decoration: none;
-    border-color: var(--primary);
+.comic img{
+    max-height: 100%;
+    min-height: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    z-index: 20;
+    color: var(--secundary);
 }
-#homeFeed h2{
-    color: white;
-    display: block;
-    height: 50vh;
+
+.cover{
+    position: absolute;
+    left: 0;
+    top:0;
+    height: 100%;
+    width: 100%;
     display: flex;
-    align-items: flex-end;
     justify-content: center;
-    width: auto;
+    align-items: center;
+    text-align: center;
+    z-index: 10;
+    padding:10px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+
+
+    background: rgba(0, 0, 0, 0.815);
+    color: var(--terciary);
+    /* border: 2px solid var(--secundary); */
+}
+
+.comic:hover a{
+    transform: translateY(-5px);
+    box-shadow: none;
+}
+
+a:hover .cover 
+, .front{
+    z-index: 50;
+}
+
+.front{
+    background: var(--terciary);
+    color: var(--secundary);
+}
+
+#homeFeed h2{
+    font-family: 'Oswald', sans-serif;
+    color: var(--secundary);
+    padding-top: 5vh;
     margin: 0;
 }
 

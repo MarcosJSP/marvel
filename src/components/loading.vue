@@ -7,26 +7,26 @@
 </template>
 
 <style>
-    #loading{
-        color: white;
+     #loading{
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100%;
-        letter-spacing: 1px;
         position: fixed;
-        top: auto;
-        left: 45vw;
-        z-index: 5;
+        top: 0;
+        left: 0;
+        z-index: 80;
+        height: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.096);
     }
 
     .loading-bar{
+        letter-spacing: 1px;
         padding: 15px;
         background-color: var(--terciary);
-        border: 1px white solid;
-        border-radius: 10px;
-        -webkit-box-shadow: 0px 0px 27px 0px rgba(0,0,0,0.46);
-        -moz-box-shadow: 0px 0px 27px 0px rgba(0,0,0,0.46);
-        box-shadow: 0px 0px 27px 0px rgba(0,0,0,0.46);
+        border: 2px solid var(--secundary);
+        color: var(--secundary);
+        font-family: 'Oswald', sans-serif;
     }
+
 </style>

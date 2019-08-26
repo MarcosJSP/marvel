@@ -49,3 +49,9 @@ export default {
     }
 };
 </script>
+
+<style>
+.home{
+    padding: 5vh 6vw 2.5vh;
+}
+</style>

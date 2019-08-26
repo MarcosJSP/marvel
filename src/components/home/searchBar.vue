@@ -1,26 +1,28 @@
 <template>
   <div id="searchBar">
-    <div class="search-section">
       <input
         @keyup.enter="searchComic"
         v-model="comicName"
         type="text"
         placeholder="Search comics..."
       />
-      <span class="separator">|</span>
-      <select v-model="sortingMethodSelected">
-        <option class="sortingMethod" value="focDate" disabled="disabled">Sort by</option>
-        <option
-          class="sortingMethod"
-          v-for="sortingMethod in sortingMethods"
-          :key="sortingMethod"
-        >{{sortingMethod}}</option>
-      </select>
-      <button class="asc" @click="asc=!asc" :class="{desc: !asc}"> > </button>
 
-      <span class="separator">|</span>
+      <div class="ordering-section">
+        <select v-model="sortingMethodSelected">
+          <option class="sortingMethod" value="focDate" disabled="disabled">Sort by</option>
+          <option
+            class="sortingMethod"
+            v-for="sortingMethod in sortingMethods"
+            :key="sortingMethod"
+          >{{sortingMethod}}</option>
+        </select>
+        <span>
+          <button class="asc" @click="asc=!asc" :class="{desc: !asc}"></button>
+        </span>
+      </div>
+
+      <span class="separator"></span>
       <button @click="searchComic">Search</button>
-    </div>
   </div>
 </template>
 
@@ -111,76 +113,121 @@ export default {
 </script>
 
 <style>
-#searchBar {
+#searchBar{
   height: 5vh;
-  padding: 15px 0;
+  background: var(--terciary);
   display: flex;
-  justify-content: center;
-  font-family: "Roboto", sans-serif;
-  font-size: 0.9rem;
-  position: fixed;
-  width: 100%;
-  top: calc(7vh);
-}
-
-.search-section {
-  background-color: white;
-  border-radius: 20px;
-  padding: 2.25vh 10px 2.25vh 20px;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  -webkit-box-shadow: 0px 0px 38px 9px rgba(0, 0, 0, 0.46);
-  -moz-box-shadow: 0px 0px 38px 9px rgba(0, 0, 0, 0.46);
-  box-shadow: 0px 0px 38px 9px rgba(0, 0, 0, 0.46);
 }
 
-.search-section input,
-.search-section button,
-.search-section select {
+#searchBar button
+,#searchBar select{
   all: unset;
 }
 
-.search-section select {
-  color: grey;
-  text-align: right;
-  text-align-last: center;
-  cursor: pointer;
+#searchBar input
+,#searchBar .ordering-section
+,#searchBar button
+,#searchBar .separator{
+  border: none;
+  height: 100%;
+  font-family: 'Oswald', sans-serif;
 }
 
-.search-section button {
-  width: 70px;
+#searchBar input{
+  border-left: 2px solid var(--secundary);
+  border-top: 2px solid var(--secundary);
+  border-bottom: 2px solid var(--secundary);
+  padding: 0 1vw;
+  flex-basis: 65%;
+}
+
+#searchBar > button
+,#searchBar .ordering-section{
+  background: var(--terciary);
+  color: var(--secundary);
+  border: 2px solid black;
+  flex-basis: 17.35%;
+}
+
+#searchBar .separator{
+  margin: 0;
+  padding: 0;
+  background: var(--terciary);
+  flex-basis: 0.3%;
+}
+
+#searchBar > button{
+  color: var(--terciary);
   text-align: center;
   cursor: pointer;
+  box-sizing: border-box;
+
+  color: var(--secundary);
+  background: white;
+  border: 2px solid black;
 }
 
-.search-section input {
-  width: 130px;
-}
-
-.search-section select:focus,
-.search-section select:hover {
-  color: black;
-}
-
-.search-section button:hover {
+#searchBar > button:hover
+,#searchBar .ordering-section select:hover
+,#searchBar .ordering-section select:focus{
   color: var(--primary);
+
 }
 
-.separator {
-  display: block;
-  margin: 0 10px;
-  color: grey;
+#searchBar > button:active{
+  background: var(--secundary);
+  color: var(--terciary);
 }
 
-.search-section button.asc{
-  transform: rotate(-90deg);
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
+#searchBar .ordering-section{
+  display: flex;
+  align-items: center;
 }
 
-.search-section button.desc{
-  transform: rotate(90deg);
+#searchBar .ordering-section select{
+  cursor: pointer;
+  padding: 0;
+  text-align: center;
+  text-align-last: center;
+  flex-basis: 80%;
+}
+
+
+#searchBar .ordering-section option{
+  flex-basis: 20%;
+  font-family: 'Oswald', sans-serif;
+  color: var(--secundary);
+  height: 100%;
+}
+
+#searchBar .ordering-section span{
+  height: 100%;
+  flex-basis: 20%;
+  border-left: 2px solid var(--secundary);
+}
+#searchBar .ordering-section button{
+  cursor: pointer;
+  transform: rotate(0deg);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background: url(../../assets/arrow-up.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 55%;
+}
+
+#searchBar .ordering-section button.desc{
+  transform: rotate(180deg);
+}
+
+#searchBar .ordering-section button:hover{
+  background: url(../../assets/arrow-up-red.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 55%;
 }
 </style>
