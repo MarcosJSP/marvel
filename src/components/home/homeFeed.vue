@@ -41,7 +41,7 @@ export default {
 
 <style>
 #homeFeed{
-    margin-bottom: 5vh;
+    margin-bottom: 2.5vh;
 }
 .comics{
     display: flex;
@@ -50,7 +50,7 @@ export default {
 }
 
 .comic{
-    margin-top: 5vh;
+    margin-top: 2.5vh;
     height: 35vh;
     flex-basis: calc( calc(100% - 10vh) / 5 );
 

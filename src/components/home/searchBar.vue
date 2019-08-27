@@ -9,7 +9,7 @@
 
       <div class="ordering-section">
         <select v-model="sortingMethodSelected">
-          <option class="sortingMethod" value="focDate" disabled="disabled">Sort by</option>
+          <option class="sortingMethod" value="title" disabled="disabled">Sort by</option>
           <option
             class="sortingMethod"
             v-for="sortingMethod in sortingMethods"
@@ -43,7 +43,7 @@ export default {
         "issueNumber",
         "modified"
       ],
-      sortingMethodSelected: "focDate"
+      sortingMethodSelected: "title"
       ,asc:true
     };
   },
@@ -132,6 +132,7 @@ export default {
   border: none;
   height: 100%;
   font-family: 'Oswald', sans-serif;
+  font-size: 1rem;
 }
 
 #searchBar input{
@@ -217,7 +218,7 @@ export default {
   background: url(../../assets/arrow-up.svg);
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 55%;
+  background-size: 40%;
 }
 
 #searchBar .ordering-section button.desc{
@@ -228,6 +229,6 @@ export default {
   background: url(../../assets/arrow-up-red.svg);
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 55%;
+  background-size: 40%;
 }
 </style>

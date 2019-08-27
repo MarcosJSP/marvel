@@ -126,6 +126,7 @@ export default {
     #pageSelector{
         display: flex;
         justify-content: center;
+        align-items: center;
         height: 5vh;
         font-family: 'Oswald', sans-serif;
         font-weight: bold;

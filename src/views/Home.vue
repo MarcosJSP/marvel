@@ -52,6 +52,6 @@ export default {
 
 <style>
 .home{
-    padding: 5vh 6vw 2.5vh;
+    padding: 4vh 6vw 3.5vh;
 }
 </style>
