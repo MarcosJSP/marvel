@@ -7,7 +7,7 @@ This project was made for [EOI-Garantía Juvenil: Programa de Especialización e
 - Basic knowledge about Vue framework & good practices such as componentization.
 - API REST requests.
 
-The project itself is a MARVEL comic search engine that relies on the [MARVEL API](https://developer.marvel.com/) to allows the user to search for a comic by its name, and also filter the result by alphabetical order or date of sale. A cool thing of the project is that the user can link a specific page (of the pagination) that he found interesting via url.
+The project itself is a MARVEL comic search engine that relies on the [MARVEL API](https://developer.marvel.com/) to allows the user to search for a comic by its name, and also filter the result by alphabetical order or date of sale. A cool thing about the project is that the user can link a specific page (of the pagination) that he found interesting via url.
 
 <img align="center" src="readme assets/marvel.gif" alt="Demo gif"></img>
 
