@@ -1,4 +1,4 @@
-# marvel
+# MARVEL comics search engine using Vue
 
 This project was made for [EOI-Garantía Juvenil: Programa de Especialización en Programación FullStack (2019)](https://www.spegc.org/formacion-y-eventos/programacion-fullstack-4/) in order to practice:
 
